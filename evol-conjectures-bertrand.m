@@ -1,4 +1,4 @@
-(* mathematica code for "Evolutionarily stable conjectures and ohter-regarding preferences in duopoly games" *)
+(* mathematica code for Evolutionarily stable conjectures and ohter-regarding preferences in duopoly games *)
 
 SetAttributes[{ri,rj,a,b,c,t},Constant];
 $Assumptions=t<1&&t>-1&&b<1&&b>0&&c>=0&&a>0&&Reals;
@@ -25,17 +25,6 @@ rsol=Solve[rj==claim2,rj] [[2,1,2]]//FullSimplify
 (* the evolutionarily stable conjeture rE *)
 essfoc=D[f[xi,xj]/.xsol,ri]/.{ri->rE,rj->rE};
 essconjectures=Refine[Solve[essfoc==0,rE]]//FullSimplify
-
-(* Proposition 4 Proof Step 2: the non-asymptotic conjecture rE1 *)
-
-(* this is the fitness when the other player has rE1 *)
-arbfitness=f[xi,xj]/.xsol/.{ri->r,rj->essconjectures[[2,1,2]]};
-
-Pr=Numerator[Together[arbfitness]];
-Qr=Denominator[Together[arbfitness]];
-
-(* Proposition 4 Proof Step 2: first compute the asymptotic conjecture rE2 *)
-rE2=Solve[CoefficientList[Numerator[FullSimplify[essfoc/.rE->r]],r][[2]]*r+CoefficientList[Numerator[FullSimplify[essfoc/.rE->r]],r][[1]]==0,r][[1,1,2]]//FullSimplify
 
 (* this is the fitness when the other player has rE2 *)
 arbfitnessa=f[xi,xj]/.xsol/.{ri->r,rj->rE2};
