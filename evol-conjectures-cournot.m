@@ -25,17 +25,3 @@ rsol=Solve[rj==claim2,rj][[2,1,2]] //FullSimplify
 (* solve the evolutionarily stable conjectures rE *)
 essfoc=D[f[xi,xj]/.xsol,ri]/.{ri->rE,rj->rE};
 essconjectures=Solve[essfoc==0,rE] //FullSimplify
-
-(* Proposition 2 Proof Step 2: we show that rE is the unique solution of max_r f(r,rE)
- here r refers to the arbitrary conjecture, Pr and Qr are P(r) and Q(r) *)
-arbfitness=f[xi,xj]/.xsol/.{ri->r,rj->essconjectures[[2,1,2]]};
-
-Pr=Numerator[Together[arbfitness]];
-Qr=Denominator[Together[arbfitness]];
-
-Qr//FullSimplify
-Pr//FullSimplify
-
-(* these are second degree polynomials *)
-Exponent[Pr,r]
-Exponent[Qr,r]
