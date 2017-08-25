@@ -25,24 +25,3 @@ rsol=Solve[rj==claim2,rj] [[2,1,2]]//FullSimplify
 (* the evolutionarily stable conjeture rE *)
 essfoc=D[f[xi,xj]/.xsol,ri]/.{ri->rE,rj->rE};
 essconjectures=Refine[Solve[essfoc==0,rE]]//FullSimplify
-
-(* this is the fitness when the other player has rE2 *)
-arbfitnessa=f[xi,xj]/.xsol/.{ri->r,rj->rE2};
-Pra=Numerator[Together[arbfitness]];
-Qra=Denominator[Together[arbfitness]];
-
-(* for the non-asymptotic conjecture rE1 *)
-Pr/.Sqrt[-(-1+b^2)^4 (-1+t)^3 (1+t)^2 (-4 b^2 (1+t)^3+(2+c)^2 (1+t (3+4 t)))]->A//Simplify
-Qr/.Sqrt[-(-1+b^2)^4 (-1+t)^3 (1+t)^2 (-4 b^2 (1+t)^3+(2+c)^2 (1+t (3+4 t)))]->A//Simplify
-
-(* these are second degree polynomials in r *)
-Exponent[Pr,r]
-Exponent[Qr,r]
-
-(* the asymptotic conjecture rE2 *)
-Pra//Simplify
-Qra//Simplify
-
-(* these are second degree polynomials in r *)
-Exponent[Pra,r]
-Exponent[Qra,r]
